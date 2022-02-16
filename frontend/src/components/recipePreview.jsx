@@ -4,11 +4,11 @@
  * @todo implement
  */
 
-//import "./component styles/recipePreview.scss";
+import "./component styles/recipePreview.scss";
 
 function RecipePreview(props){
     return(
-        <article>
+        <article className="recipe-preview">
             <header>
                 <h4>{props.title}</h4>
             </header>

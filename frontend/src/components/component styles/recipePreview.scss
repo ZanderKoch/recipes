@@ -1,0 +1,28 @@
+//@use "styles/colors.scss";
+
+.recipe-preview{
+    margin-bottom: 16px;
+    display:grid;
+    grid-template-columns: auto min-content ;
+    grid-template-rows: auto auto;
+    grid-template-areas: "title star-count"
+                         "description description";
+
+    header{
+        margin: 0;
+        //color: ;
+        grid-area: title;
+        h4{
+            margin: 0;
+        }
+    }
+    
+    span{
+        grid-area: star-count;
+    }
+
+    p{
+        margin: 0;
+        grid-area: description;
+    }
+}
