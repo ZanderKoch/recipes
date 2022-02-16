@@ -3,6 +3,8 @@
  * @author Zander Koch
  */
 
+import RecipeList from "./recipeList";
+
 function Home(){  
     return(
         <main>
@@ -16,7 +18,7 @@ function Home(){
                 och ovan kan du logga in / reistrera dig, eller som inloggad
                 användare lägga till ett recept.
             </p>
-
+            <RecipeList/>
         </main>
     );
 }
