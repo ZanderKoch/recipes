@@ -1,4 +1,4 @@
-//@use "styles/colors.scss";
+@use "../../styles/colors.scss";
 
 .recipe-preview{
     margin-bottom: 16px;
@@ -10,7 +10,7 @@
 
     header{
         margin: 0;
-        //color: ;
+        //background-color: ;
         grid-area: title;
         h4{
             margin: 0;
