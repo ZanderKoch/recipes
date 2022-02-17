@@ -34,7 +34,7 @@ function RecipeList(){
                     "id": 2,
                     "target": 1,
                     "username": "Håkan",
-                    "content": "instruktioner oklara, byggde av mistag en IKEA-hylla"
+                    "content": "instruktioner oklara, byggde av misstag en IKEA-hylla"
                 },
             ],
             "imageUrl": "https://picsum.photos/200/300"

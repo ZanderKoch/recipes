@@ -1,0 +1,17 @@
+/*stylesheet containing variables for the colors and fpmts used in this project,
+as well as formatting mixins*/
+
+//site colors
+$bg-color: #C6EBBE;
+$main-color: #7CA5B8;
+$accent-color: #38369A;
+
+//site fonts
+$header-font: domine;
+$bodytext-font: poppins;
+
+@mixin main-color-header{
+    background-color: $main-color;
+    color: black;
+    font-family: $header-font;
+}

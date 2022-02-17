@@ -1,4 +1,4 @@
-@use "../../styles/colors.scss";
+@import "../../styles/formats.scss";
 
 .recipe-preview{
     margin-bottom: 16px;
@@ -9,8 +9,8 @@
                          "description description";
 
     header{
+        @include main-color-header;
         margin: 0;
-        //background-color: ;
         grid-area: title;
         h4{
             margin: 0;
@@ -18,7 +18,11 @@
     }
     
     span{
+        @include main-color-header;
         grid-area: star-count;
+        &:first-letter{
+            color: gold !important;
+        }
     }
 
     p{
