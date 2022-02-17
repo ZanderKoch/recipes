@@ -7,5 +7,5 @@ package recipes;
 public enum PropKey{
     DB_USER,
     DB_PASSWORD,
-    DB_ADDRESS
+    DB_URL
 }
