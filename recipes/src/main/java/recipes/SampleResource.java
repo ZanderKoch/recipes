@@ -1,4 +1,4 @@
-package nu.te4.recepies;
+package recipes;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
