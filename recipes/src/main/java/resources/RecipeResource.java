@@ -1,5 +1,6 @@
 package resources;
 
+import beans.RecipeBean;
 import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
