@@ -1,4 +1,4 @@
-package recepies;
+package recipes;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
