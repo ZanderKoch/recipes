@@ -16,7 +16,7 @@ public class Util{
     public static String getProperty(PropKey key){
         System.out.println("");
         try{
-            System.out.println("Util.java: attempting to get property"
+            System.out.println("Util.getProperty(): attempting to get property"
                     + key.toString()
                     + "from config file");
             
@@ -31,7 +31,7 @@ public class Util{
             return properties.getProperty(key.toString());
         } 
         catch(Exception e) {
-            System.out.println("Util.java:" + e +  "while trying to read property \""
+            System.out.println("Util.getProperty():" + e +  "while trying to read property \""
                     + key.toString() + "\" from config");
             return null;
         }
