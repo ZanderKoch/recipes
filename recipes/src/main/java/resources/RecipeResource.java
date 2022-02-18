@@ -1,6 +1,7 @@
 package resources;
 
 import beans.RecipeBean;
+import entities.ReturnSprout;
 import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,6 +18,6 @@ public class RecipeResource{
     
     @GET
     public Response getAllRecipes(){
-        
+        ReturnSprout sprout = recipeBean.getRecipes();
     }
 }

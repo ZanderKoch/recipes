@@ -1,5 +1,5 @@
 
-package enteties;
+package entities;
 
 import javax.ws.rs.core.Response;
 
@@ -10,4 +10,9 @@ import javax.ws.rs.core.Response;
 public class ReturnSprout <T>{
     private T entity;
     private Response.Status status;
+
+    public ReturnSprout(T entity, Response.Status status){
+        this.entity = entity;
+        this.status = status;
+    }
 }
