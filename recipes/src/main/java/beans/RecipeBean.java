@@ -88,5 +88,16 @@ public class RecipeBean{
         }
     }
     
+    /**
+     * updates provided recipes starcount using it's <code>id</code> attribute
+     * @param recipe recipe to update
+     */
+    private static void addStarCount(Recipe recipe){
+        try(Connection connection = ConnectionFactory.getConnection()){
+            
+        }
+        catch(Exception e){
+            System.out.println("RecipeBean.AddStarCount():" + e);
+        }
     }
 }
