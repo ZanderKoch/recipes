@@ -71,5 +71,22 @@ public class RecipeBean{
             return result;
         }
     }
+    
+    /**
+     * returns provided list of recipes with
+     * ingredients, instructions, starcount, and comments added 
+     * @param recipes recipes to add externals to
+     * @return same ArrayList as provided but with externals added
+     * @TODO add methods for adding ingredients, instructions and comments
+     */
+    private static ArrayList<Recipe> addExternals(ArrayList<Recipe> recipes){
+        ArrayList<Recipe> result = new ArrayList();
+        for(Recipe recipe : recipes){
+            //addIngredients(recipe);
+            //addInstructions(recipe);
+            addStarCount(recipe);
+        }
+    }
+    
     }
 }
