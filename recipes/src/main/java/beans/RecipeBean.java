@@ -5,6 +5,7 @@ import entities.Recipe;
 import entities.ReturnSprout;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.ejb.Stateless;
 import javax.ws.rs.core.Response;
@@ -34,6 +35,7 @@ public class RecipeBean{
                 return new ReturnSprout("no recipes found"
                         ,Response.Status.NOT_FOUND);
             }
+            recipes = getBasicRecipeList(result);
             
         }
         catch(Exception e){
@@ -43,11 +45,31 @@ public class RecipeBean{
     
     /**
      * returns an arraylist of recepies with the basic attributes that can be
-     * gotten from 
-     * @param resultSet
+     * gotten from recipe table
+     * @param resultSet ResultSet with columns:
+     * id, author, title, and description
      * @return an arraylist of recipes with id, author, title, and description
      */
     private static ArrayList<Recipe> getBasicRecipeList(ResultSet resultSet){
-        
+        ArrayList<Recipe> result = new ArrayList();
+        try{
+            while(resultSet.next()){
+                result.add(new Recipe(
+                    resultSet.getInt("id")
+                    ,resultSet.getString("author")
+                    ,resultSet.getString("title")
+                    ,resultSet.getString("description")
+                ));
+            }
+        }
+        catch(SQLException e){
+            System.out.println("Recipebean.getBasicRecipesList(): "
+                    + "there was an error while getting basics from ResultSet: "
+                    + e);
+        }
+        finally{
+            return result;
+        }
+    }
     }
 }
