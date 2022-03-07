@@ -24,22 +24,32 @@ public class RecipeBean{
      * and a status code
      */
     public ReturnSprout getRecipes(){
+        ArrayList<Recipe> recipes = new ArrayList();
         try(Connection connection = ConnectionFactory.getConnection()){
-            ArrayList<Recipe> recipes = new ArrayList();
+            
             
             String sql = "SELECT * FROM recipe";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
             
             if(!result.first()){
+                System.out.println("RecipeBean.getRecipes(): no recipes found");
                 return new ReturnSprout("no recipes found"
                         ,Response.Status.NOT_FOUND);
             }
+            
             recipes = getBasicRecipeList(result);
+            recipes = addExternals(recipes);
             
         }
         catch(Exception e){
             System.out.println("RecipeBean.getRecipes():" + e);
+        }
+        finally{
+            /*I should make a method that validates the recipes list and returns
+            a sprout with an error message if it doesn't go through
+            */
+            return new ReturnSprout(recipes, Response.Status.OK);
         }
     }
     
@@ -84,8 +94,10 @@ public class RecipeBean{
         for(Recipe recipe : recipes){
             //addIngredients(recipe);
             //addInstructions(recipe);
+            //addComments;
             addStarCount(recipe);
         }
+        return result;
     }
     
     /**
@@ -94,7 +106,11 @@ public class RecipeBean{
      */
     private static void addStarCount(Recipe recipe){
         try(Connection connection = ConnectionFactory.getConnection()){
-            
+            String sql = "SELECT COUNT(*) FROM star WHERE recipe_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, recipe.getId());
+            ResultSet result = statement.executeQuery();
+            recipe.setStarCount(result.getInt(1));
         }
         catch(Exception e){
             System.out.println("RecipeBean.AddStarCount():" + e);
