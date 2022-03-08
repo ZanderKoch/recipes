@@ -19,5 +19,8 @@ public class RecipeResource{
     @GET
     public Response getAllRecipes(){
         ReturnSprout sprout = recipeBean.getRecipes();
+        return Response.status(sprout.getStatus())
+                .entity(sprout.getEntity())
+                .build();
     }
 }
