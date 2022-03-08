@@ -29,6 +29,7 @@ public class Recipe{
         this.id = id;
         this.author = author;
         this.title = title;
+        this.description = description;
     }
 
     public int getId() {
