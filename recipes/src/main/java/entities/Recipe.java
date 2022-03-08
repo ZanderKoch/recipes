@@ -16,6 +16,7 @@ public class Recipe{
     private ArrayList<String> instructions;
     private int starCount;
     private ArrayList<Comment> comments;
+    private ArrayList<String> categories;
     
     public Recipe(){
         
@@ -93,7 +94,12 @@ public class Recipe{
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
     }
-    
-    
-    
+
+    public ArrayList<String> getCategories(){
+        return categories;
+    }
+
+    public void setCategories(ArrayList<String> categories){
+        this.categories = categories;
+    }
 }

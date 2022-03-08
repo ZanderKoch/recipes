@@ -37,7 +37,10 @@ function RecipeList(){
                     "content": "instruktioner oklara, byggde av misstag en IKEA-hylla"
                 },
             ],
-            "image": "https://picsum.photos/200/300"
+            "image": "https://picsum.photos/200/300",
+            "categories":[
+                "varmrätt"
+            ]
         },
         {
             "id": 2,
@@ -69,7 +72,11 @@ function RecipeList(){
                     "content": "instruktioner oklara, brände ner min lägenhet"
                 },
             ],
-            "image": "https://picsum.photos/200/300"
+            "image": "https://picsum.photos/200/300",
+            "categories":[
+                "varmrätt",
+                "ugnsrätt"
+            ]
         }
     ];
 
