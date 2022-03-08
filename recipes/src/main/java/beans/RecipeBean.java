@@ -72,7 +72,10 @@ public class RecipeBean{
                     ,resultSet.getString("title")
                     ,resultSet.getString("description")
                 ));
+                System.out.println("Recipebean.getBasicRecipesList(): title:"
+                        + resultSet.getString("title"));
             }
+            
         }
         catch(SQLException e){
             System.out.println("Recipebean.getBasicRecipesList(): "
