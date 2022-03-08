@@ -10,11 +10,13 @@ import java.sql.SQLException;
  */
 public class ConnectionFactory{
     public static Connection getConnection()
-            throws ClassNotFoundException, SQLException{
+            throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
         
         System.out.println("ConnectionFactory.getConnection(): "
                 + "attempting to get database connection");
         
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
+
         String user = Util.getProperty(PropKey.DB_USER);
         String password = Util.getProperty(PropKey.DB_PASSWORD);
         String url = Util.getProperty(PropKey.DB_URL);
