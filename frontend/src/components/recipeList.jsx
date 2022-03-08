@@ -81,16 +81,16 @@ function RecipeList(){
         }
     ];*/
     console.log("fetch...");
-    const {data:testRecipe, isLoading, error} = useFetch("http://localhost:8080/recipes/api/recipe");
+    const {data:testRecipes, isLoading, error} = useFetch("http://localhost:8080/recipes/api/recipe");
 
     if(isLoading){
         return <article></article>
     }
 
-        console.log(testRecipe);
+        console.log(testRecipes);
         console.log(error)
 
-    /*console.log(testRecipes);
+    console.log(testRecipes);
 
     return(
         <section className="recipe-list">
@@ -108,7 +108,7 @@ function RecipeList(){
                 })
             }
         </section>
-    );*/
+    );
 }
 
 export default RecipeList;

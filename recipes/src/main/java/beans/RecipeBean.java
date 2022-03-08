@@ -95,16 +95,31 @@ public class RecipeBean{
     private static void addExternals(ArrayList<Recipe> recipes){
         
         for(Recipe recipe : recipes){
-            //addIngredients(recipe);
+            addIngredients(recipe);
             //addInstructions(recipe);
             //addComments;
             addStarCount(recipe);
-        }
-        
+        }        
     }
     
     /**
-     * updates provided recipes starcount using it's <code>id</code> attribute
+     * updates provided recipe's ingredients using its <code>id</code> attribute
+     * @param recipe recipe to update
+     */
+    private static void addIngredients(Recipe recipe){
+        try(Connection connection = ConnectionFactory.getConnection()){
+            String sql = "SELECT text FROM ingredient WHERE recipe_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, recipe.getId());
+        }
+        catch(Exception e){
+            System.out.println("RecipeBean.AddIngredients():" + e);
+        }
+    }
+    
+    
+    /**
+     * updates provided recipe's starcount using its <code>id</code> attribute
      * @param recipe recipe to update
      */
     private static void addStarCount(Recipe recipe){
