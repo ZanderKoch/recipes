@@ -39,8 +39,10 @@ public class RecipeBean{
             }
             
             recipes = getBasicRecipeList(result);
-            recipes = addExternals(recipes);
+            System.out.println(recipes.size());
             
+            addExternals(recipes); 
+            System.out.println(recipes.size());
         }
         catch(Exception e){
             System.out.println("RecipeBean.getRecipes():" + e);
