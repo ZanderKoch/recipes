@@ -67,7 +67,7 @@ public class RecipeBean{
             while(resultSet.next()){
                 result.add(new Recipe(
                     resultSet.getInt("id")
-                    ,resultSet.getString("author")
+                    ,resultSet.getString("user_username")
                     ,resultSet.getString("title")
                     ,resultSet.getString("description")
                 ));
