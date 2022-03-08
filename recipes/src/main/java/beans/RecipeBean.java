@@ -92,15 +92,15 @@ public class RecipeBean{
      * @return same ArrayList as provided but with externals added
      * @TODO add methods for adding ingredients, instructions and comments
      */
-    private static ArrayList<Recipe> addExternals(ArrayList<Recipe> recipes){
-        ArrayList<Recipe> result = new ArrayList();
+    private static void addExternals(ArrayList<Recipe> recipes){
+        
         for(Recipe recipe : recipes){
             //addIngredients(recipe);
             //addInstructions(recipe);
             //addComments;
             addStarCount(recipe);
         }
-        return result;
+        
     }
     
     /**
