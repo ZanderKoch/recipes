@@ -15,4 +15,21 @@ public class ReturnSprout <T>{
         this.entity = entity;
         this.status = status;
     }
+
+    public T getEntity(){
+        return entity;
+    }
+
+    public void setEntity(T entity){
+        this.entity = entity;
+    }
+
+    public Response.Status getStatus(){
+        return status;
+    }
+
+    public void setStatus(Response.Status status){
+        this.status = status;
+    }
+    
 }
