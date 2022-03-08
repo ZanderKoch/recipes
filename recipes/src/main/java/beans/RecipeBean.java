@@ -113,6 +113,15 @@ public class RecipeBean{
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, recipe.getId());
             ResultSet result = statement.executeQuery();
+            
+            //check if any stars were found
+            if(result.first()){
+                recipe.setStarCount(result.getInt(1));
+            }
+            else{
+                recipe.setStarCount(0);
+            }
+            
             recipe.setStarCount(result.getInt(1));
         }
         catch(Exception e){
