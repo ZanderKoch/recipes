@@ -63,7 +63,8 @@ public class RecipeBean{
      */
     private static ArrayList<Recipe> getBasicRecipeList(ResultSet resultSet){
         ArrayList<Recipe> result = new ArrayList();
-        try{
+        try{          
+            resultSet.beforeFirst();
             while(resultSet.next()){
                 result.add(new Recipe(
                     resultSet.getInt("id")
