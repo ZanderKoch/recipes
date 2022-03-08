@@ -47,12 +47,11 @@ public class RecipeBean{
         catch(Exception e){
             System.out.println("RecipeBean.getRecipes():" + e);
         }
-        finally{
-            /*I should make a method that validates the recipes list and returns
-            a sprout with an error message if it doesn't go through
-            */
-            return new ReturnSprout(recipes, Response.Status.OK);
-        }
+
+        /*I should make a method that validates the recipes list and returns
+        a sprout with an error message if it doesn't go through
+        */
+        return new ReturnSprout(recipes, Response.Status.OK);
     }
     
     /**
@@ -79,9 +78,7 @@ public class RecipeBean{
                     + "there was an error while getting basics from ResultSet: "
                     + e);
         }
-        finally{
-            return result;
-        }
+        return result;
     }
     
     /**
