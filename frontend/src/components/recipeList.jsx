@@ -4,10 +4,11 @@
  */
 
 import RecipePreview from "./recipePreview";
+import useFetch from "react-fetch-hook";
 
 function RecipeList(){
     //dummy data, two-recipe array
-    let testRecipes = [
+    /*let testRecipes = [
         {
             "id": 1,
             "author": "Svante",
@@ -78,7 +79,18 @@ function RecipeList(){
                 "ugnsrätt"
             ]
         }
-    ];
+    ];*/
+    console.log("fetch...");
+    const {data:testRecipe, isLoading, error} = useFetch("http://localhost:8080/recipes/api/recipe");
+
+    if(isLoading){
+        return <article></article>
+    }
+
+        console.log(testRecipe);
+        console.log(error)
+
+    /*console.log(testRecipes);
 
     return(
         <section className="recipe-list">
@@ -96,7 +108,7 @@ function RecipeList(){
                 })
             }
         </section>
-    );
+    );*/
 }
 
 export default RecipeList;
