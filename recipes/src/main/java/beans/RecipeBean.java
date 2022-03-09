@@ -103,7 +103,7 @@ public class RecipeBean{
     }
     
     /**
-     * updates provided recipe's ingredients using its <code>id</code> attribute
+     * updates provided recipe's ingredients using its id attribute
      * @param recipe recipe to update
      */
     private static void addIngredients(Recipe recipe){
@@ -119,7 +119,7 @@ public class RecipeBean{
     
     
     /**
-     * updates provided recipe's starcount using its <code>id</code> attribute
+     * updates provided recipe's starcount using its id attribute
      * @param recipe recipe to update
      */
     private static void addStarCount(Recipe recipe){
