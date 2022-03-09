@@ -8,6 +8,7 @@ Author: Zander Koch*/
     grid-template-columns: auto min-content ;
     grid-template-rows: auto auto;
     grid-template-areas: "title star-count"
+                         "ingredients ingredients"
                          "description description";
 
     header{
@@ -25,6 +26,10 @@ Author: Zander Koch*/
         &:first-letter{
             color: gold !important;
         }
+    }
+
+    ul:nth-child(1){
+        grid-area: ingredients;
     }
 
     p{
