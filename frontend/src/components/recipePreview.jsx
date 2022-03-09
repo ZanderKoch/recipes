@@ -13,6 +13,15 @@ function RecipePreview(props){
                 <h4>{props.title}</h4>
             </header>
             <span>&#9733;{props.starCount}</span>
+            <ul>
+                {
+                    props.ingredients.map(ingredient =>{
+                        return(
+                            <li key={ingredient}>{ingredient}</li> 
+                        )
+                    })
+                }
+            </ul>
             <p>
                 {props.description}
             </p>

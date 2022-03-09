@@ -81,16 +81,16 @@ function RecipeList(){
         }
     ];*/
     console.log("fetch...");
-    const {data:testRecipes, isLoading, error} = useFetch("http://localhost:8080/recipes/api/recipe");
+    const {data:loadedRecipes, isLoading, error} = useFetch("http://localhost:8080/recipes/api/recipe");
 
     if(isLoading){
         return <article></article>
     }
 
-        console.log(testRecipes);
+        console.log(loadedRecipes);
         console.log(error)
 
-    console.log(testRecipes);
+    console.log(loadedRecipes);
 
     return(
         <section className="recipe-list">
@@ -100,8 +100,7 @@ function RecipeList(){
                 </h3>
             </header>
             {
-                testRecipes.map(recipe=>
-                {
+                loadedRecipes.map(recipe=>{
                     return(
                         <RecipePreview key={recipe.id} {...recipe}/>
                     )
