@@ -96,8 +96,8 @@ public class RecipeBean{
         
         for(Recipe recipe : recipes){
             addIngredients(recipe);
-            //addInstructions(recipe);
             //addComments;
+            addInstructions(recipe);
             addStarCount(recipe);
         }        
     }
@@ -111,9 +111,33 @@ public class RecipeBean{
             String sql = "SELECT text FROM ingredient WHERE recipe_id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, recipe.getId());
+    /**
+     * updates provided recipe's instructions using its id attribute
+     * @param recipe recipe to update
+     */
+    public static void addInstructions(Recipe recipe){
+        try(Connection connection = ConnectionFactory.getConnection()){
+            String sql = "SELECT text FROM instruction WHERE recipe_id = ? "
+                    + "ORDER BY step asc";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, recipe.getId());
+            ResultSet result = statement.executeQuery();
+            
+            //check if any ingredients were found
+            if(result.first()){
+                result.beforeFirst();
+                while(result.next()){
+                    recipe.getInstructions().add(result.getString("text"));
+                }
+            }
+            else{
+                recipe.getInstructions().add("no instructions found");
+                System.out.println("RecipeBean.AddInstructions(): no "
+                        + "instructions found");
+            }
         }
         catch(Exception e){
-            System.out.println("RecipeBean.AddIngredients():" + e);
+            System.out.println("RecipeBean.AddInstructions(): " + e);
         }
     }
     
