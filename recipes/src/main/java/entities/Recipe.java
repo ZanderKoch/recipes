@@ -17,6 +17,7 @@ public class Recipe{
     private int starCount;
     private ArrayList<Comment> comments = new ArrayList();
     private ArrayList<String> categories = new ArrayList();
+    private String Image; //base64 when being posted, url otherwise
     
     public Recipe(){
         
