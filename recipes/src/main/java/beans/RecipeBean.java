@@ -26,8 +26,6 @@ public class RecipeBean{
     public ReturnSprout getRecipes(){
         ArrayList<Recipe> recipes = new ArrayList();
         try(Connection connection = ConnectionFactory.getConnection()){
-            
-            
             String sql = "SELECT * FROM recipe";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery();
@@ -46,6 +44,8 @@ public class RecipeBean{
         }
         catch(Exception e){
             System.out.println("RecipeBean.getRecipes():" + e);
+            /*TODO: error handleing that returns a sprout with appropriate
+            message and status code*/
         }
 
         /*I should make a method that validates the recipes list and returns
