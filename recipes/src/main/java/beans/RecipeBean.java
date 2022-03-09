@@ -96,8 +96,8 @@ public class RecipeBean{
         
         for(Recipe recipe : recipes){
             addIngredients(recipe);
-            //addComments;
             addInstructions(recipe);
+            addComments(recipe);
             addStarCount(recipe);
         }        
     }
@@ -159,6 +159,10 @@ public class RecipeBean{
         catch(Exception e){
             System.out.println("RecipeBean.AddInstructions(): " + e);
         }
+    }
+    
+    private static void addComments(Recipe recipe){
+        
     }
     
     
