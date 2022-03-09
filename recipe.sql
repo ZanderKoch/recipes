@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2022 at 02:30 PM
+-- Generation Time: Mar 09, 2022 at 01:54 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -57,6 +57,19 @@ CREATE TABLE `ingredient` (
   `text` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `ingredient`
+--
+
+INSERT INTO `ingredient` (`id`, `recipe_id`, `text`) VALUES
+(1, 1, 'mjölk'),
+(2, 1, 'ägg'),
+(3, 1, 'mjöl'),
+(4, 2, 'mjölk'),
+(5, 2, 'ägg'),
+(6, 2, 'mjöl'),
+(7, 2, 'saltat fläsk');
+
 -- --------------------------------------------------------
 
 --
@@ -83,6 +96,14 @@ CREATE TABLE `recipe` (
   `title` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `recipe`
+--
+
+INSERT INTO `recipe` (`id`, `user_username`, `description`, `title`) VALUES
+(1, 'Svante', 'de e platta', 'pannkakor'),
+(2, 'Sture', 'bättre än pannkakor', 'ugnspanka med fläsk');
+
 -- --------------------------------------------------------
 
 --
@@ -105,6 +126,16 @@ CREATE TABLE `user` (
   `username` varchar(28) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`username`, `password`) VALUES
+('Svante', 'test'),
+('Sture', 'test'),
+('Håkan', 'test'),
+('Erik', 'test');
 
 --
 -- Indexes for dumped tables
@@ -159,6 +190,40 @@ ALTER TABLE `star`
 --
 ALTER TABLE `user`
   ADD KEY `username` (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ingredient`
+--
+ALTER TABLE `ingredient`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `instruction`
+--
+ALTER TABLE `instruction`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `recipe`
+--
+ALTER TABLE `recipe`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `star`
+--
+ALTER TABLE `star`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
