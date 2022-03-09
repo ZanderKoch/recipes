@@ -1,5 +1,5 @@
 /**
- * @file an element that displays a list of all recepies
+ * @file a component that displays a list of all recepies fetched from backend
  * @author Zander Koch
  */
 
