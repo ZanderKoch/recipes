@@ -111,6 +111,26 @@ public class RecipeBean{
             String sql = "SELECT text FROM ingredient WHERE recipe_id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, recipe.getId());
+            ResultSet result = statement.executeQuery();
+            
+            //check if any ingredients were found
+            if(result.first()){
+                result.beforeFirst();
+                while(result.next()){
+                    recipe.getIngredients().add(result.getString("text"));
+                }
+            }
+            else{
+                recipe.getIngredients().add("no ingredients found");
+                System.out.println("RecipeBean.AddIngredients(): no ingredients"
+                        + "found");
+            }
+        }
+        catch(Exception e){
+            System.out.println("RecipeBean.AddIngredients(): " + e);
+        }
+    }
+    
     /**
      * updates provided recipe's instructions using its id attribute
      * @param recipe recipe to update
