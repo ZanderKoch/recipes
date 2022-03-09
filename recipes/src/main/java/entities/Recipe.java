@@ -11,12 +11,12 @@ public class Recipe{
     private int id;
     private String author;
     private String title;
-    private ArrayList<String> ingredients;
+    private ArrayList<String> ingredients = new ArrayList();
     private String description;
-    private ArrayList<String> instructions;
+    private ArrayList<String> instructions = new ArrayList();
     private int starCount;
-    private ArrayList<Comment> comments;
-    private ArrayList<String> categories;
+    private ArrayList<Comment> comments = new ArrayList();
+    private ArrayList<String> categories = new ArrayList();
     
     public Recipe(){
         
