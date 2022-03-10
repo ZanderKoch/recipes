@@ -16,3 +16,8 @@ $bodytext-font: poppins;
     color: black;
     font-family: $header-font;
 }
+
+@mixin no-color-header{
+    background-color: $main-color;
+    font-family: $header-font;
+}
