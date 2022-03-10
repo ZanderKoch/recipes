@@ -18,6 +18,6 @@ $bodytext-font: poppins;
 }
 
 @mixin no-color-header{
-    background-color: $main-color;
+    color: black;
     font-family: $header-font;
 }
