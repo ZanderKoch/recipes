@@ -48,6 +48,7 @@ public class RecipeBean{
             System.out.println("RecipeBean.getRecipes():" + e);
             /*TODO: error handleing that returns a sprout with appropriate
             message and status code*/
+            
         }
 
         /*I should make a method that validates the recipes list and returns
@@ -163,7 +164,12 @@ public class RecipeBean{
         }
     }
     
+    /**
+     * updates provided recipe's comments using its id attribute
+     * @param recipe recipe to update
+     */
     private static void addComments(Recipe recipe){
+        
         CommentBean commentBean = new CommentBean();
         ReturnSprout sprout = commentBean.getComments(recipe.getId());
         
