@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2022 at 01:54 PM
+-- Generation Time: Mar 10, 2022 at 11:06 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -42,8 +42,15 @@ CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
   `recipe_id` int(11) NOT NULL,
   `user_username` varchar(28) NOT NULL,
-  `text` int(11) NOT NULL
+  `text` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`id`, `recipe_id`, `user_username`, `text`) VALUES
+(1, 1, 'Erik', '🥘🍪👍👍👍👍👍');
 
 -- --------------------------------------------------------
 
@@ -79,9 +86,17 @@ INSERT INTO `ingredient` (`id`, `recipe_id`, `text`) VALUES
 CREATE TABLE `instruction` (
   `id` int(11) NOT NULL,
   `recipe_id` int(11) NOT NULL,
-  `text` int(11) NOT NULL,
+  `text` varchar(32) NOT NULL,
   `step` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `instruction`
+--
+
+INSERT INTO `instruction` (`id`, `recipe_id`, `text`, `step`) VALUES
+(3, 1, 'vispa', 1),
+(4, 1, 'stek', 2);
 
 -- --------------------------------------------------------
 
@@ -199,7 +214,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ingredient`
@@ -211,7 +226,7 @@ ALTER TABLE `ingredient`
 -- AUTO_INCREMENT for table `instruction`
 --
 ALTER TABLE `instruction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `recipe`
