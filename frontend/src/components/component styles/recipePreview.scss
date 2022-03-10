@@ -5,13 +5,17 @@ Author: Zander Koch*/
 .recipe-preview{
     margin-bottom: 16px;
     display:grid;
-    grid-template-columns: auto min-content ;
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-columns: auto min-content;
     grid-template-areas: "title star-count"
                          "ingredients-header ingredients-header"
                          "ingredients ingredients"
                          "description-header description-header"
-                         "description description";
+                         "description description"
+                         "instruction-header instruction-header"
+                         "instruction instruction"
+                         "comment-header comment-header";
+
+
 
     header{
         h4{
@@ -27,10 +31,7 @@ Author: Zander Koch*/
             grid-area: title;
     }   
     
-    :nth-of-type(3){
-        grid-area: description-header;
-        @include no-color-header;
-    }
+    
      
     span{
         @include main-color-header;
@@ -44,11 +45,28 @@ Author: Zander Koch*/
         grid-area: ingredients-header;
         @include no-color-header;
     }
+    
+    :nth-of-type(3){
+        grid-area: description-header;
+        @include no-color-header;
+    }
 
     p{
         margin: 0;
         grid-area: description;
     }
-    
-    
+
+    header:nth-of-type(4){
+        grid-area: instruction-header;
+        @include no-color-header;
+    }
+
+    ol{
+        grid-area: instruction;
+    }
+
+    header:nth-of-type(5){
+        grid-area: comment-header;
+        @include no-color-header;
+    }
 }
