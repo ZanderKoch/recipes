@@ -30,6 +30,28 @@ function RecipePreview(props){
             <p>
                 {props.description}
             </p>
+            <header>
+                <h5>Instruktioner</h5>
+            </header>
+            <ol>
+                {
+                    props.instructions.map(instruction =>{
+                        return(
+                            <li key={instruction}>{instruction}</li>
+                        )
+                    })
+                }
+            </ol>
+            <div>
+            <header>
+                <h5>Kommentarer</h5>
+                {
+                    
+                }
+            </header>
+            </div>
+            
+
         </article>
     );
 }
