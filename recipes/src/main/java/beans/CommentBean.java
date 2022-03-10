@@ -28,6 +28,7 @@ public class CommentBean{
         try(Connection connection = ConnectionFactory.getConnection()){
             String sql = "SELECT * FROM comment WHERE recipe_id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
             
             if(!result.first()){
@@ -36,8 +37,17 @@ public class CommentBean{
                 return new ReturnSprout("no comments found"
                         ,Response.Status.NOT_FOUND);
             }
+            result.beforeFirst();
+            while(result.next()){
+                comments.add(new Comment(
+                    result.getInt("id")
+                    ,result.getInt("recipe_id")
+                    ,result.getString("user_username")
+                    ,result.getString("text")));
+            }
         }
         catch(Exception e){
+            System.out.println("CommentBean.getComments(): " + e);
             /*TODO: error handleing that returns a sprout with appropriate
             message and status code*/
         }
