@@ -1,12 +1,14 @@
 package beans;
 
 import com.mysql.jdbc.Connection;
+import entities.Comment;
 import entities.Recipe;
 import entities.ReturnSprout;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.core.Response;
 import recipes.ConnectionFactory;
@@ -17,7 +19,7 @@ import recipes.ConnectionFactory;
  */
 @Stateless
 public class RecipeBean{
-    
+
     /**
      * gets all recipes
      * @return a sprout containing the recipes resulting from the database query
@@ -162,7 +164,12 @@ public class RecipeBean{
     }
     
     private static void addComments(Recipe recipe){
+        CommentBean commentBean = new CommentBean();
+        ReturnSprout sprout = commentBean.getComments(recipe.getId());
         
+        if(sprout.getStatus() == Response.Status.OK){
+            recipe.setComments((ArrayList<Comment>) sprout.getEntity());
+        }   
     }
     
     
