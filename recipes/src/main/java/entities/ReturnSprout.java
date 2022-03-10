@@ -11,6 +11,10 @@ public class ReturnSprout <T>{
     private T entity;
     private Response.Status status;
 
+    public ReturnSprout(){
+        
+    }
+    
     public ReturnSprout(T entity, Response.Status status){
         this.entity = entity;
         this.status = status;
