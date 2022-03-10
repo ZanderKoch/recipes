@@ -6,20 +6,32 @@ Author: Zander Koch*/
     margin-bottom: 16px;
     display:grid;
     grid-template-columns: auto min-content ;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto auto auto auto;
     grid-template-areas: "title star-count"
+                         "ingredients-header ingredients-header"
                          "ingredients ingredients"
+                         "description-header description-header"
                          "description description";
 
     header{
-        @include main-color-header;
-        margin: 0;
-        grid-area: title;
         h4{
             margin: 0;
         }
+        h5{
+            margin: 0;
+        }
     }
+                         
+    header:nth-of-type(1){
+        @include main-color-header;
+            grid-area: title;
+    }   
     
+    :nth-of-type(3){
+        grid-area: description-header;
+        @include no-color-header;
+    }
+     
     span{
         @include main-color-header;
         grid-area: star-count;
@@ -27,17 +39,16 @@ Author: Zander Koch*/
             color: gold !important;
         }
     }
-
-    ul:nth-child(1){
-        grid-area: ingredients;
+    
+    header:nth-of-type(2){
+        grid-area: ingredients-header;
+        @include no-color-header;
     }
 
     p{
         margin: 0;
         grid-area: description;
     }
-
-    h5{
-        @include
-    }
+    
+    
 }
