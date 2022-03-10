@@ -1,7 +1,6 @@
 /**
- * @file an element that displays a preview of provided recipe
+ * @file an component that displays a preview of provided recipe
  * @author Zander Koch
- * @todo implement
  */
 
 import "./component styles/recipePreview.scss";
@@ -13,6 +12,9 @@ function RecipePreview(props){
                 <h4>{props.title}</h4>
             </header>
             <span>&#9733;{props.starCount}</span>
+            <header>
+                <h5>Ingredienser</h5>
+            </header>
             <ul>
                 {
                     props.ingredients.map(ingredient =>{
@@ -22,6 +24,9 @@ function RecipePreview(props){
                     })
                 }
             </ul>
+            <header>
+                <h5>Beskrivning</h5>
+            </header>
             <p>
                 {props.description}
             </p>
