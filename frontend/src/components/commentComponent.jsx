@@ -3,13 +3,17 @@
  * @author Zander Koch
  */
 
-function Comment(props){
+function CommentComponent(props){
     return(
         <article>
             <header>
                 <h6>{props.username} skriver:</h6> 
             </header>
-            
+            <p>
+                {props.content}
+            </p>
         </article>
     );
 }
+
+export default CommentComponent;
