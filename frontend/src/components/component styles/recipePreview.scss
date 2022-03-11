@@ -45,6 +45,10 @@ Author: Zander Koch*/
         grid-area: ingredients-header;
         @include no-color-header;
     }
+
+    ul{
+        grid-area: ingredients;
+    }
     
     :nth-of-type(3){
         grid-area: description-header;
@@ -68,5 +72,18 @@ Author: Zander Koch*/
     header:nth-of-type(5){
         grid-area: comment-header;
         @include no-color-header;
+    }
+
+    /* where the comments go */
+    div{
+        article{
+            margin-top: 8px;
+            header{
+                
+                h6{
+                    margin: 0;
+                }
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@
  */
 
 import "./component styles/recipePreview.scss";
+import CommentComponent from "./commentComponent";
 
 function RecipePreview(props){
     return(
@@ -17,10 +18,10 @@ function RecipePreview(props){
             </header>
             <ul>
                 {
-                    props.ingredients.map(ingredient =>{
+                    props.ingredients.map(ingredient => {
                         return(
                             <li key={ingredient}>{ingredient}</li> 
-                        )
+                        );
                     })
                 }
             </ul>
@@ -35,23 +36,25 @@ function RecipePreview(props){
             </header>
             <ol>
                 {
-                    props.instructions.map(instruction =>{
+                    props.instructions.map(instruction => {
                         return(
                             <li key={instruction}>{instruction}</li>
-                        )
+                        );
                     })
                 }
             </ol>
             <div>
-            <header>
-                <h5>Kommentarer</h5>
+                <header>
+                    <h5>Kommentarer</h5>
+                </header>
                 {
-                    
+                    props.comments.map(comment => {
+                        return(
+                            <CommentComponent key={comment.id} {...comment}/>
+                        );
+                    })
                 }
-            </header>
-            </div>
-            
-
+                </div>
         </article>
     );
 }
