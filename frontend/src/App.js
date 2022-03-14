@@ -3,6 +3,7 @@ import logo from './logo.svg';
 
 import Navigation from './components/navigation';
 import Home from './components/home';
+import RecipeEditor from './components/recipeEditor';
 
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -16,7 +17,8 @@ function App() {
         <Router>
             <Navigation/>
             <Routes>
-                <Route path="/" element={<Home/>}/>    
+                <Route path="/" element={<Home/>}/>
+                <Route path="/add" element={<RecipeEditor/>}/>    
             </Routes>
         </Router>
     </>
