@@ -1,6 +1,7 @@
 package beans;
 
 import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
 import entities.Comment;
 import entities.Recipe;
 import entities.ReturnSprout;
@@ -202,6 +203,39 @@ public class RecipeBean{
         }
         catch(Exception e){
             System.out.println("RecipeBean.AddStarCount():" + e);
+        }
+    }
+    
+    /**
+     * attempt to add a recipe to database
+     * @param recipe
+     * @return 
+     */
+    public ReturnSprout addRecipe(Recipe recipe){
+        try(Connection connection = ConnectionFactory.getConnection()){
+            String sql = "INSERT INTO recipe (user_username, description, title)"
+                    + " VALUES(?, ?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sql
+                    ,Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, "test");
+            statement.setString(2, recipe.getDescription());
+            statement.setString(3, recipe.getTitle());
+            statement.execute();
+            ResultSet result = statement.getGeneratedKeys();
+            
+            //get the id of the created recipe
+            
+            //use aquired id to add ingredients and instructions
+        }
+        catch(SQLException e){
+            System.out.println("RecipeBean.addRecipe" + e);
+            return new ReturnSprout("there was an error while connecting to "
+                    + "the database", Response.Status.INTERNAL_SERVER_ERROR);
+        }
+        catch(Exception e){
+            System.out.println("RecipeBean.addRecipe" + e);
+            return new ReturnSprout("there was an error while adding recipe"
+                    ,Response.Status.INTERNAL_SERVER_ERROR);
         }
     }
 }
