@@ -228,9 +228,16 @@ public class RecipeBean{
                 return new ReturnSprout("Recipe could not be added to database"
                    ,Response.Status.INTERNAL_SERVER_ERROR);
             }
-            recipe.setId(result.getInt(1)); 
+            recipe.setId(result.getInt(1));
             
+            ReturnSprout ingredientSprout = addIgredientsToDB(recipe);
+            if(ingredientSprout.getStatus() != Response.Status.OK){
+                return ingredientSprout;
+            }
             
+            //add instructions to database
+            
+            return new ReturnSprout("", Response.Status.CREATED);
         }
         catch(SQLException e){
             System.out.println("RecipeBean.addRecipe: " + e);
@@ -245,13 +252,37 @@ public class RecipeBean{
     }
     
     /**
-     * attempts to add the ingredients of provided recipe to the database 
+     * attempts to add the ingredients of provided recipe to the database and 
+     * returns a ReturnSprout with information about how it went
      * @param recipe
-     * @return 
+     * @return a ReturnSprout with info on how the process went, status will be
+     * OK if successful
      */
     private ReturnSprout addIgredientsToDB(Recipe recipe){
         try(Connection connection = ConnectionFactory.getConnection()){
-            String sql = "INSERT INTO ingredients()"
+            String sql = "INSERT INTO ingredients(recipe_id, text) "
+                    + "VALUES(?, ?)";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            
+            for(String ingredient : recipe.getIngredients()){
+                statement.setInt(1, recipe.getId());
+                statement.setString(2, ingredient);
+                
+                int result = statement.executeUpdate();
+                
+                if(result != 1){
+                    System.out.println("recipeBean.addIngredientsToDB: "
+                            + "there was a problem while adding ingredients to "
+                            + "the database");
+                    return new ReturnSprout("there was a problem while adding "
+                            + "ingredients to the database"
+                            ,Response.Status.INTERNAL_SERVER_ERROR);
+                }
+                
+            }
+            return new ReturnSprout("recipes successfully added"
+                    ,Response.Status.OK);
+            
         }
         catch(SQLException e){
             System.out.println("RecipeBean.addIgredientsToDB: " + e);
@@ -264,4 +295,26 @@ public class RecipeBean{
                     ,Response.Status.INTERNAL_SERVER_ERROR);
         }
     }
+    /**
+     * attempts to add the ingredients of provided recipe to the database and 
+     * returns a ReturnSprout with information about how it went
+     * @param recipe
+     * @return a ReturnSprout with info on how the process went, status will be
+     * OK if successful
+     */
+    /*private ReturnSprout addInstructionsToDB(Recipe recipe){
+        try(Connection connection = ConnectionFactory.getConnection()){
+            
+        }
+        catch(SQLException e){
+            System.out.println("RecipeBean.addIgredientsToDB: " + e);
+            return new ReturnSprout("there was an error while connecting to "
+                    + "the database", Response.Status.INTERNAL_SERVER_ERROR);
+        }
+        catch(Exception e){
+            System.out.println("RecipeBean.addIgredientsToDB: " + e);
+            return new ReturnSprout("there was an error while adding recipe"
+                    ,Response.Status.INTERNAL_SERVER_ERROR);
+        }
+    }*/
 }
