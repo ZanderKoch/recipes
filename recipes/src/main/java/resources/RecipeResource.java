@@ -32,5 +32,8 @@ public class RecipeResource{
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addRecipe(Recipe recipe){
         ReturnSprout sprout = recipeBean.addRecipe(recipe);
+        return Response.status(sprout.getStatus())
+                .entity(sprout.getEntity())
+                .build();
     }
 }
